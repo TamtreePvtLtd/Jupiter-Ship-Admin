@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Backgroundcolor = () => {
-  const [color, setColor] = useState("#ffffff"); // Default color
+  const [color, setColor] = useState("#ffffff"); 
 
   const handleColorChange = (event:any) => {
     setColor(event.target.value);
