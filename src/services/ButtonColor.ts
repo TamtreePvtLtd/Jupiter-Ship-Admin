@@ -1,10 +1,10 @@
 import { httpWithoutCredentials } from "./http";
 
-export const createBackgroundColor = async (colorData: { color: string }) => {
+export const createButtonColor = async (ButtonColorData: { color: string }) => {
   try {
     const response = await httpWithoutCredentials.post(
-      "/backgroundcolor/createBackgroundColor",
-      colorData
+      "/buttonColor/CreateButtonColor",
+      ButtonColorData
     );
     return response.data;
   } catch (error) {

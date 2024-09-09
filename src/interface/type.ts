@@ -1,3 +1,3 @@
-export interface IFontSize {
-  size: string;
+export interface IBackgroundColor {
+  backgroundcolor: string;
 }
