@@ -1,29 +1,20 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import  {  useState } from "react";
+
+import { useCreateButtonColor } from "../customHooksRQ/Hooks";
 
 function ButtonColor() {
   const [buttonColor, setButtonColor] = useState("#ffffff");
   const [newColor, setNewColor] = useState("");
 
- 
+  const createButtonColorMutation = useCreateButtonColor();
 
-  const handleColorChange = (e:any) => {
+  const handleColorChange = (e: any) => {
     setNewColor(e.target.value);
   };
 
   const saveColor = () => {
-    // Post the new color to the API
-    axios
-      .post("http://localhost:3000/buttonColor/ButtonColor", {
-        color: newColor,
-      })
-      .then((response) => {
-        setButtonColor(response.data.color);
-        setNewColor("");
-      })
-      .catch((error) => {
-        console.error("Error updating button color:", error);
-      });
+    createButtonColorMutation.mutate({ color: newColor });
+    setButtonColor(newColor);
   };
 
   return (

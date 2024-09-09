@@ -1,10 +1,10 @@
 import { httpWithoutCredentials } from "./http";
 
-export const createBackgroundColor = async (colorData: { color: string }) => {
+export const createFontSize = async (FontSizeData: { size: string }) => {
   try {
     const response = await httpWithoutCredentials.post(
-      "/backgroundcolor/createBackgroundColor",
-      colorData
+      "/fontSize/setFontSize",
+      FontSizeData
     );
     return response.data;
   } catch (error) {

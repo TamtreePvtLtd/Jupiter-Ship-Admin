@@ -1,10 +1,12 @@
 import { httpWithoutCredentials } from "./http";
 
-export const createBackgroundColor = async (colorData: { color: string }) => {
+export const createFontFamily = async (FontFamilyData: {
+  fontFamily: string;
+}) => {
   try {
     const response = await httpWithoutCredentials.post(
-      "/backgroundcolor/createBackgroundColor",
-      colorData
+      "/fontfamily/setFontConfig",
+      FontFamilyData
     );
     return response.data;
   } catch (error) {

@@ -3,6 +3,7 @@ import FontSize from "./Pages/FontSize";
 import FontFamily from "./Pages/FontFamily";
 import ButtonColor from "./Pages/ButtonColor";
 import Backgroundcolor from "./Pages/BackgroundColor";
+import TextColor from "./Pages/TextColor";
 
 export const queryClient = new QueryClient();
 
@@ -12,7 +13,8 @@ function App() {
       <FontSize />
       <FontFamily />
       <ButtonColor />
-      <Backgroundcolor/>
+      <Backgroundcolor />
+      <TextColor/>
     </QueryClientProvider>
   );
 }

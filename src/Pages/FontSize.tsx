@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+
+import { useCreateFontSize } from "../customHooksRQ/Hooks";
 
 const FontSize = () => {
-  const [fontSize, setFontSize] = useState("medium");
+
   const [selectedSize, setSelectedSize] = useState("medium");
 
+  const createFontSizeMutation = useCreateFontSize();
+  
   const handleSizeChange = (size:string) => {
     setSelectedSize(size);
   };
 
   const handleSave = () => {
-    axios
-      .post("http://localhost:3000/fontSize/setFontSize", {
-        size: selectedSize,
-      })
-      .then((response) => {
-        setFontSize(response.data.size);
-      })
-      .catch((error) => {
-        console.error("There was an error saving the font size!", error);
-      });
+    createFontSizeMutation.mutate({ size: selectedSize });
   };
 
   return (

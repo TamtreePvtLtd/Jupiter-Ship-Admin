@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import { useCreateFontFamily } from "../customHooksRQ/Hooks";
 
 const FontFamily = () => {
   const [fontFamily, setFontFamily] = useState("");
@@ -12,26 +13,12 @@ const FontFamily = () => {
     "cursive",
   ];
 
-  
+  const createFontFamilyMutation = useCreateFontFamily();
 
-  const handleFontFamilyChange = (event:any) => {
+  const handleFontFamilyChange = (event: any) => {
     const selectedFont = event.target.value;
     setFontFamily(selectedFont);
-
-    fetch("http://localhost:3000/fontfamilyFontSize/setFontConfig", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ fontFamily: selectedFont }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Font family updated:", data.fontFamily);
-      })
-      .catch((error) => {
-        console.error("Error updating font family:", error);
-      });
+    createFontFamilyMutation.mutate({ fontFamily: selectedFont });
   };
 
   return (
